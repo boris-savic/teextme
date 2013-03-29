@@ -3,6 +3,8 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+AUTH_USER_MODEL = 'customauth.MyUser'
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -121,12 +123,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'registration',
 
     'teextme',
+    'customauth',
+    'customregistration',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -158,13 +161,12 @@ LOGGING = {
     }
 }
 
-#django-registration
-ACCOUNT_ACTIVATION_DAYS=7
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ""
-EMAIL_USE_TLS = False
-DEFAULT_FROM_EMAIL = 'testing@example.com'
 LOGIN_REDIRECT_URL='/'
+
+#Nexmo SMS settings
+SITE_NAME = "TeextMe"
+API_KEY = "KEY"
+API_SECRET = "SECRET"
+
+ACTIVATION_MESSAGE = "Welcome to TeextMe, your activation code is: "

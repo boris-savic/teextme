@@ -1,4 +1,4 @@
-{% extends "registration/registration_base.html" %}
+{% extends "customregistration/registration_base.html" %}
 
 {% load helpers %}
 
@@ -6,8 +6,8 @@
 
 {% block content %}
 <form method='post' action=''>{% csrf_token %}
-  {{ form.username|placeholder:'Username'|field_class:'input-block-level' }}
-  {{ form.email|placeholder:'Email'|field_class:'input-block-level' }}
+  {{ form.country_code}}
+  {{ form.phone_number|placeholder:'Phone Number'|field_class:'input-block-level'}}
   {{ form.password1|placeholder:'Password'|field_class:'input-block-level' }}
   {{ form.password2|placeholder:'Password (again)'|field_class:'input-block-level' }}
   <button class="btn btn-large btn-primary" type="submit">Sign Up</button>

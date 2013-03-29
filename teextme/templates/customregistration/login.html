@@ -1,4 +1,4 @@
-{% extends "registration/registration_base.html" %}
+{% extends "customregistration/registration_base.html" %}
 
 {% load helpers %}
 
@@ -11,13 +11,13 @@
 {% endif %}
 
 <form method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
-  {{ form.username|placeholder:'Username'|field_class:'input-block-level' }}
+  {{ form.username|placeholder:'Phone Number'|field_class:'input-block-level' }}
   {{ form.password|placeholder:'Password'|field_class:'input-block-level' }}
   <!-- <label class="checkbox">
     <input type="checkbox" value="remember-me"> Remember me
   </label> -->
 
-  <p><a href="{% url 'auth_password_reset' %}">Forgot</a> your password?  <a href="{% url 'registration_register' %}">Need an account</a>?</p>
+  <p><a href="{% url 'registration_register' %}">Need an account</a>?</p>
 
   <button class="btn btn-large btn-primary" type="submit">Sign in</button>
   <input type="hidden" name="next" value="{{ next }}" />

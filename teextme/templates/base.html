@@ -28,11 +28,11 @@
 
             <ul class="nav pull-right">
                {% if user.is_authenticated %}
-                <li><a href="#">Hi {{user.username|capfirst}}</a></li>
+                <li><a href="#">Hi {{user.phone_number}}</a></li>
                 <li><a href="{% url 'django.contrib.auth.views.logout' %}">Logout</a><li>
                {% else %}
                 <li><a href="{% url 'django.contrib.auth.views.login' %}">Sign in</a><li>
-               <li><a href="{% url 'registration.views.register' %}">Sign up</a></li>
+               <li><a href="{% url 'customregistration.views.register' %}">Sign up</a></li>
                {% endif %}
             </ul>
           </div>
