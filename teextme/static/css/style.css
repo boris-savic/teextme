@@ -1,0 +1,33 @@
+.container-narrow {
+  margin:0 auto;
+  max-width:700px;
+}
+
+.main {
+  padding-top: 30px;
+}
+
+.auth .form-auth {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 30px auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.auth .form-auth .form-auth-heading,
+.auth .form-auth .checkbox {
+  margin-bottom: 10px;
+}
+.auth .form-auth input[type="text"],
+.auth .form-auth input[type="password"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+}
