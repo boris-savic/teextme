@@ -14,7 +14,7 @@ class ActivationProfileManager(models.Manager):
         code = str(random.randint(10000, 99999))
         activation = self.create(user=user, code=code)
 
-        phone = user.full_number()
+        phone = user.full_number
 
         try:
             send_sms(settings.SITE_NAME, phone, settings.ACTIVATION_MESSAGE % code)
