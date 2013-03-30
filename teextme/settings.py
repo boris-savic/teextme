@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'customregistration',
 
     'contacts',
+    'messaging'
 )
 
 # A sample logging configuration. The only tangible logging
