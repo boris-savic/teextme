@@ -130,6 +130,8 @@ INSTALLED_APPS = (
     'teextme',
     'customauth',
     'customregistration',
+
+    'contacts',
 )
 
 # A sample logging configuration. The only tangible logging
