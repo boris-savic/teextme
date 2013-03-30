@@ -1,16 +1,14 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
 from django.test import TestCase
 
+from customauth.models import MyUser
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+class MyUserTest(TestCase):
+    def test_full_number(self):
+        joe = MyUser.objects.create(country_code='+386', phone_number='12345678')
+
+        self.assertEqual(joe.full_number, '+38612345678')
+
+    def test_full_number_leading_zero(self):
+        joe = MyUser.objects.create(country_code='+386', phone_number='012345678')
+
+        self.assertEqual(joe.full_number, '+38612345678')
