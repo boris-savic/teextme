@@ -80,4 +80,5 @@ class MyUser(AbstractBaseUser):
         # Simplest possible answer: All admins are staff
         return self.is_admin
 
-
+    def full_number(self):
+        return self.country_code + self.phone_number.lstrip('0')

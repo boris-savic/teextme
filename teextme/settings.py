@@ -182,9 +182,15 @@ LOGGING = {
 
 LOGIN_REDIRECT_URL='/'
 
-#Nexmo SMS settings
 SITE_NAME = "TeextMe"
-API_KEY = "KEY"
-API_SECRET = "SECRET"
 
-ACTIVATION_MESSAGE = "Welcome to TeextMe, your activation code is: "
+# Nexmo SMS settings
+NEXMO_API_KEY = "KEY"
+NEXMO_API_SECRET = "SECRET"
+
+ACTIVATION_MESSAGE = "Welcome to TeextMe, your activation code is: %s"
+
+try:
+    from local_settings import *
+except:
+    pass
