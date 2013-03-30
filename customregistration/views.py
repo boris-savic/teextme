@@ -2,10 +2,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth import login
+from django.db import transaction
 
 from customregistration.forms import RegistrationForm, ActivationForm
 
-
+@transaction.commit_on_success
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request, request.POST)

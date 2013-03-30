@@ -45,6 +45,8 @@ class MyUser(AbstractBaseUser):
         db_index=True,
     )
 
+    full_number = models.CharField(max_length=255) # generated, denormalization
+
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
@@ -80,4 +82,6 @@ class MyUser(AbstractBaseUser):
         # Simplest possible answer: All admins are staff
         return self.is_admin
 
-
+    def save(self, *args, **kwargs):
+        self.full_number = self.country_code + self.phone_number.lstrip('0')
+        ret = super(MyUser, self).save(*args, **kwargs)
