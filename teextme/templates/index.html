@@ -1,19 +1,15 @@
-{% extends "base.html" %}
+{% extends "app_base.html" %}
 
-{% block site_title %}TeextMe{% endblock %}
+{% block title %}TeextMe{% endblock %}
 
-{% block body_content %}
-  <div class="container-narrow main">
+{% block content %}
+  {% if request.user.is_authenticated %}
+  <h2><a href="{% url 'contacts' %}">Contacts</a></h2>
+  {% else %}
     <div class="hero-unit">
       <h1>Let's Teext!</h1>
       <p>With TeextMe you can text with your friends over SMS for free, no matter where you or your friends are!</p>
       <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
     </div>
-
-    <hr>
-
-    <footer>
-      <p>&copy; TeextMe 2013</p>
-    </footer>
-  </div>
+  {% endif %}
 {% endblock %}
