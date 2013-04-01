@@ -1,0 +1,22 @@
+{% extends "customregistration/registration_base.html" %}
+
+{% block title %}Please Activate account{% endblock %}
+
+{% load helpers %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>{{ form.errors }}.</p>
+{% endif %}
+
+<p>Please wait a few moments for activation code to arrive via SMS</p>
+
+<form method="post" action="">{% csrf_token %}
+  {{ form.phone_number|placeholder:'Phone Number'|field_class:'input-block-level' }}
+  {{ form.validation_code|placeholder:'Activation code'|field_class:'input-block-level' }}
+
+  <button class="btn btn-large btn-primary" type="submit">Activate</button>
+</form>
+
+{% endblock %}

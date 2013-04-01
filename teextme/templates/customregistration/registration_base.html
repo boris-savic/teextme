@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body_class %}{{ block.super }} auth{% endblock %}
+
+{% block body_content %}
+  <div class="form-auth">
+    <h2 class="form-auth-heading">{% block title %}{% endblock %}</h2>
+
+    {% block content %}{% endblock %}
+  </div>
+{% endblock %}

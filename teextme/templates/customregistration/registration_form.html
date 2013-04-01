@@ -1,0 +1,25 @@
+{% extends "customregistration/registration_base.html" %}
+
+{% load helpers %}
+
+{% block title %}Register for an account{% endblock %}
+
+{% block content %}
+<form method='post' action=''>{% csrf_token %}
+  {% for error in form.non_field_errors %}
+    <div class="alert alert-error">{{ error }}</div>
+  {% endfor %}
+
+  {% for field in form %}
+    {% for error in field.errors %}
+      <div class="alert alert-error">{{ field.label }}: {{ error }}</div>
+    {% endfor %}
+  {% endfor %}
+
+  {{ form.country_code}}
+  {{ form.phone_number|placeholder:'Phone Number'|field_class:'input-block-level'}}
+  {{ form.password1|placeholder:'Password'|field_class:'input-block-level' }}
+  {{ form.password2|placeholder:'Password (again)'|field_class:'input-block-level' }}
+  <button class="btn btn-large btn-primary" type="submit">Sign Up</button>
+</form>
+{% endblock %}
