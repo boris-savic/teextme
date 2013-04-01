@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body_content %}
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		{% if contacts %}
+			<table class="table table-striped">
+				{% for contact in contacts %}
+        			<tr><td><a href="/messages/{{ contact.pk }}">{{ contact.first_name }} {{ contact.last_name }}</a></td></tr>
+    			{% endfor %}
+			</table>
+		{% else %}
+			<p>No contacts.</p>
+		{% endif %}
+	</div><!--/row-->
+  	<hr>
+  	<a href="add">Add contact</a>
+	<footer>
+		
+	</footer>
+</div><!--/.fluid-container-->
+
+{% endblock %}

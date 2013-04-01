@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body_content %}
+<div class="container contact-form">
+	<h1>Add contact</h1>
+	<form method="post" action="">{% csrf_token %}
+	    {{ form }}
+	    <br>
+	    <button class="btn btn-primary" type="submit">Add Contact</button>
+	</form>
+</div>
+{% endblock %}

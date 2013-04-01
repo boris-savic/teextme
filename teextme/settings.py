@@ -187,7 +187,7 @@ LOGIN_REDIRECT_URL='/'
 
 SITE_NAME = "TeextMe"
 
-SMS_BACKEND = 'nexmo'
+SMS_BACKEND = 'test'
 
 # Nexmo SMS settings
 NEXMO_API_KEY = "KEY"
