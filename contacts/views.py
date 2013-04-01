@@ -1,35 +1,29 @@
-from django.template import Context, loader
-from django.http import HttpResponse, HttpResponseRedirect
-
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
-
 from django.template import RequestContext
 
 from contacts.models import Contact
-
 from contacts.forms import *
 
-
-def index(request):
-    
+def contacts(request):
     user = request.user
 
-    contacts = Contact.objects.filter(user=request.user)
+    contacts = Contact.objects.filter(user=user)
 
     return render_to_response('contacts/index.html', {
         'user': user,
         'contacts': contacts,
-        }, RequestContext(request))
+    }, RequestContext(request))
 
-def add_contact(request):
-
+def contacts_add(request):
     if request.method == 'POST':
         form = ContactForm(user=request.user, data=request.POST)
         if form.is_valid():
-            new_contact = form.save() #save
+            new_contact = form.save()
             return HttpResponseRedirect("/contacts")
     else:
         form = ContactForm(user=request.user)
+
     return render_to_response("contacts/new.html", {
-        'form': form}, 
-        RequestContext(request))
+        'form': form
+    }, RequestContext(request))

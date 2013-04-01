@@ -14,6 +14,9 @@ class Message(models.Model):
     date_received = models.DateTimeField(null=True, blank=True)
     other_message = models.ForeignKey('messaging.Message', null=True, blank=True, related_name='other_messages')
 
+    def __unicode__(self):
+        return self.message
+
     def send(self):
         sender_phone_number = self.user.full_number
 

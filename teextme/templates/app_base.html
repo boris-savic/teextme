@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block site_title %}{% block title %}{% endblock %}{% endblock %}
+
+{% block body_content %}
+  <div class="container-narrow main">
+    {% block content %}{% endblock %}
+
+    <hr>
+
+    <footer>
+      <p>&copy; TeextMe 2013</p>
+    </footer>
+  </div>
+{% endblock %}

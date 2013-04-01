@@ -8,6 +8,9 @@ class Contact(models.Model):
     phone_number = models.CharField(max_length=20)
     contact_user = models.ForeignKey(MyUser, related_name='contacted_me', null=True, blank=True)
 
+    def __unicode__(self):
+        return u'%s %s (%s)' % (self.first_name, self.last_name, self.phone_number)
+
     def save(self, *args, **kwargs):
         if not self.contact_user:
             matches = MyUser.objects.filter(full_number=self.phone_number)
