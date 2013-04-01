@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load helpers %}
+
+{% block body_content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		{% if messages %}
+			<div class="">		  	
+	    		{% for message in messages %}
+	    			<div class="bubble bubble-light pull-right">{{ message.message }}</div>
+	    		{% endfor %}
+    		</div>	
+		{% else %}
+    		<p>No messages.</p>
+		{% endif %}
+	</div><!--/row-->
+	<hr>
+	<div class="row-fluid">
+		<form method="post" action="">{% csrf_token %}
+			<div class="span10">
+				{{ form.message|placeholder:'Type your message'|field_class:'input-block-level'}}
+    		</div>
+			<div class="span1">
+				<button class="btn btn-block" type="button">Send</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
+
