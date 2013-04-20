@@ -2,8 +2,12 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+
 from contacts.models import Contact
 from contacts.forms import *
+from contacts.serializers import ContactSerializer
 
 def contacts(request):
     user = request.user
@@ -27,3 +31,12 @@ def contacts_add(request):
     return render_to_response("contacts/new.html", {
         'form': form
     }, RequestContext(request))
+
+
+class ContactList(generics.ListCreateAPIView):
+    model = Contact
+    serializer_class = ContactSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return Contact.objects.filter(user=self.request.user)
