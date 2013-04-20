@@ -1,0 +1,14 @@
+{% verbatim %}
+<h2>My contacts</h2>
+<a href="#/contacts/add">Add New Contact</a>
+<div>
+  <ul>
+    <li ng-repeat="contact in contacts">
+      <a href="#/contacts/{{ contact.id }}/messages">
+        <strong>{{ contact.first_name }} {{ contact.last_name }}</strong>
+        <span></span>
+      </a>
+    </li>
+  </ul>
+</div>
+{% endverbatim %}
