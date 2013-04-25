@@ -6,8 +6,9 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 from contacts.models import Contact
-from contacts.forms import *
+from contacts.forms import ContactForm
 from contacts.serializers import ContactSerializer
+
 
 def contacts(request):
     user = request.user
@@ -18,6 +19,7 @@ def contacts(request):
         'user': user,
         'contacts': contacts,
     }, RequestContext(request))
+
 
 def contacts_add(request):
     if request.method == 'POST':

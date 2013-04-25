@@ -1,14 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+
 from country import COUNTRY_CHOICES
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
-)
 
 class MyUserManager(BaseUserManager):
     def create_user(self, country_code, phone_number, password=None):
         """
-        Creates and saves a User with the given email, date of
-        birth and password.
+        Creates and saves a User with the given phone number, country country_code
+        and password.
         """
         if not phone_number:
             raise ValueError('Users must have an phone number')
@@ -24,8 +23,8 @@ class MyUserManager(BaseUserManager):
 
     def create_superuser(self, country_code, phone_number, password):
         """
-        Creates and saves a superuser with the given email, date of
-        birth and password.
+        Creates and saves a superuser with the given phone number, 
+        country country_code and password.
         """
         user = self.create_user(
             phone_number=phone_number,
@@ -56,11 +55,11 @@ class MyUser(AbstractBaseUser):
     REQUIRED_FIELDS = ['country_code']
 
     def get_full_name(self):
-        # The user is identified by their email address
+        # The user is identified by their phone number
         return self.phone_number
 
     def get_short_name(self):
-        # The user is identified by their email address
+        # The user is identified by their phone number
         return self.phone_number
 
     def __unicode__(self):
