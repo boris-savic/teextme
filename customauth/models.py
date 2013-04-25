@@ -3,10 +3,11 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 from country import COUNTRY_CHOICES
 
+
 class MyUserManager(BaseUserManager):
     def create_user(self, country_code, phone_number, password=None):
         """
-        Creates and saves a User with the given phone number, country country_code
+        Creates and saves a User with the given phone number, country code
         and password.
         """
         if not phone_number:
@@ -23,7 +24,7 @@ class MyUserManager(BaseUserManager):
 
     def create_superuser(self, country_code, phone_number, password):
         """
-        Creates and saves a superuser with the given phone number, 
+        Creates and saves a superuser with the given phone number,
         country country_code and password.
         """
         user = self.create_user(
@@ -35,6 +36,7 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
 class MyUser(AbstractBaseUser):
     country_code = models.CharField(max_length=50, choices=COUNTRY_CHOICES)
     phone_number = models.CharField(
@@ -44,7 +46,7 @@ class MyUser(AbstractBaseUser):
         db_index=True,
     )
 
-    full_number = models.CharField(max_length=255) # generated, denormalization
+    full_number = models.CharField(max_length=255)  # generated denormalization
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

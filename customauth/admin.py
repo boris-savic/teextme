@@ -11,7 +11,8 @@ class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Password confirmation',
+                                widget=forms.PasswordInput)
 
     class Meta:
         model = MyUser
@@ -67,9 +68,13 @@ class MyUserAdmin(UserAdmin):
         ('Important dates', {'fields': ('last_login',)}),
     )
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('phone_number', 'country_code', 'password1', 'password2')}
+        (
+            None,
+            {
+                'classes': ('wide',),
+                'fields': ('phone_number', 'country_code', 'password1',
+                           'password2')
+            }
         ),
     )
     search_fields = ('phone_number',)
