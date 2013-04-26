@@ -1,0 +1,27 @@
+{% verbatim %}
+<div class="add-contact">
+    <a href="#/contacts">Back</a>
+    <h2 >Add Contact</h2>
+  <div>
+    <form>
+      <div >
+        <div>
+          <label>First name</label>
+          <input type="text" placeholder="First Name" ng-model="contact.first_name">
+        </div>
+        <div>
+          <label>Last name</label>
+          <input type="text" placeholder="Last Name" ng-model="contact.last_name">
+        </div>
+        <div>
+          <label>Phone</label>
+          <input type="text" placeholder="+38612345678" ng-model="contact.phone_number">
+        </div>
+      </div>
+
+      <a href="#" ng-click="add()">Add</a>
+    </form>
+  </div>
+
+</div>
+{% endverbatim %}
