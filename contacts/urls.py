@@ -5,7 +5,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from contacts.views import ContactList
 
 
-urlpatterns = patterns('contacts.views',
+urlpatterns = patterns(
+    'contacts.views',
     url(r'^$', 'contacts', name='contacts'),
     url(r'^add$', 'contacts_add', name='contacts_add'),
 
