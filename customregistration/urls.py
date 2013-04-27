@@ -2,9 +2,14 @@ from django.conf.urls import patterns, include, url
 from django.contrib.auth import views as auth_views
 
 
-urlpatterns = patterns('',
-    url(r'^register/$', 'customregistration.views.register', name='registration_register'),
-    url(r'^activate/$', 'customregistration.views.activate', name='registration_activate'),
+urlpatterns = patterns(
+    '',
+    url(r'^register/$',
+        'customregistration.views.register',
+        name='registration_register'),
+    url(r'^activate/$',
+        'customregistration.views.activate',
+        name='registration_activate'),
     url(r'^login/$',
         auth_views.login,
         {'template_name': 'customregistration/login.html'},
