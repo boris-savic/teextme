@@ -6,6 +6,7 @@ from django.db import transaction
 
 from customregistration.forms import RegistrationForm, ActivationForm
 
+
 @transaction.commit_on_success
 def register(request):
     if request.method == 'POST':
@@ -17,11 +18,12 @@ def register(request):
     else:
         form = RegistrationForm(request)
     return render_to_response("customregistration/registration_form.html", {
-        'form': form}, 
+        'form': form},
         RequestContext(request))
 
+
 def activate(request):
-    if request.user.is_active == False:
+    if request.user.is_active is False:
         if request.method == 'POST':
             form = ActivationForm(request.POST)
             if form.is_valid():
@@ -30,11 +32,11 @@ def activate(request):
                 login(request, user)
                 return HttpResponseRedirect("/")
         else:
-            form = ActivationForm(initial={'phone_number': request.session.get('phone_number', '')})
+            form = ActivationForm(
+                initial={
+                    'phone_number': request.session.get('phone_number', '')})
         return render_to_response("customregistration/activate.html", {
-            'form': form}, 
+            'form': form},
             RequestContext(request))
     else:
         return HttpResponseRedirect("/")
-
-
