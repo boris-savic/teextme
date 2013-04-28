@@ -1,26 +1,33 @@
 {% verbatim %}
 <div class="add-contact">
-    <a href="#/contacts">Back</a>
-    <h2 >Add Contact</h2>
-  <div>
-    <form>
-      <div >
-        <div>
-          <label>First name</label>
-          <input type="text" placeholder="First Name" ng-model="contact.first_name">
-        </div>
-        <div>
-          <label>Last name</label>
-          <input type="text" placeholder="Last Name" ng-model="contact.last_name">
-        </div>
-        <div>
-          <label>Phone</label>
-          <input type="text" placeholder="+38612345678" ng-model="contact.phone_number">
-        </div>
-      </div>
+  <header class="bar-title">
+    <a class="button-prev" href="#/contacts">
+      Back
+    </a>
+    <h1 class="title">Add Contact</h1>
+  </header>
 
-      <a href="#" ng-click="add()">Add</a>
-    </form>
+  <div class="content">
+    <div class="content-padded">
+      <form>
+        <div class="input-group">
+          <div class="input-row">
+            <label>First name</label>
+            <input type="text" placeholder="Jack" ng-model="contact.firstName">
+          </div>
+          <div class="input-row">
+            <label>Last name</label>
+            <input type="text" placeholder="Sparrow" ng-model="contact.lastName">
+          </div>
+          <div class="input-row">
+            <label>Phone</label>
+            <input type="text" placeholder="+38612345678" ng-model="contact.phoneNumber">
+          </div>
+        </div>
+
+        <a class="button button-block" ng-click="add()">Add</a>
+      </form>
+    </div>
   </div>
 
 </div>

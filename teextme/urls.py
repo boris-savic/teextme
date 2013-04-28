@@ -3,6 +3,11 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 
+from rest_framework.urlpatterns import format_suffix_patterns
+
+from contacts.views import ContactList, ContactDetail
+from messaging.views import MessageList, MessageDetail
+
 admin.autodiscover()
 
 class RequestTemplateView(TemplateView):
@@ -12,6 +17,20 @@ class RequestTemplateView(TemplateView):
         return context
 
 urlpatterns = patterns('',
+    url(r'^api$', 'teextme.views.api_root'),
+
+    url(r'^api/contacts$', ContactList.as_view(), name='contact-list'),
+    url(r'^api/contacts/(?P<pk>\d+)$', ContactDetail.as_view(), name='contact-detail'),
+
+    url(r'^api/messages$', MessageList.as_view(), name='message-list'),
+    url(r'^api/messages/(?P<pk>\d+)$', MessageDetail.as_view(), name='message-detail'),
+
+    url(r'^api/stats$', 'teextme.views.stats', name='stats'),
+)
+
+urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'api'])
+
+urlpatterns += patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^accounts/', include('customregistration.urls')),

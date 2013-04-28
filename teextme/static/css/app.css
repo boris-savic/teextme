@@ -1,0 +1,178 @@
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+  display: none;
+}
+
+.tab-icon {
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 18px;
+  position: static;
+  display: block !important;
+  height: 24px;
+}
+
+.messages .list li {
+  padding: 10px 60px 10px 10px;
+}
+
+.messages .list li > a {
+  margin: -10px -60px -10px -10px;
+}
+
+.messages .message-author {
+  margin-bottom: 3px;
+}
+
+.contact-messages .content {
+  background-color: #D7E8FF;
+  padding-bottom: 44px;
+}
+
+.contact-messages .message-list {
+  margin: 0;
+}
+
+.contact-messages .message-list li {
+  *zoom: 1;
+  list-style: none;
+  display: block;
+  margin: 12px 6px;
+}
+
+.contact-messages .message-list li:before,
+.contact-messages .message-list li:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+
+.contact-messages .message-list li:after {
+  clear: both;
+}
+
+.contact-messages .message-list li span {
+  border: 1px solid #AAA;
+  padding: 3px 8px;
+  border-radius: 14px;
+  -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.25);
+  position: relative;
+  max-width: 48%;
+}
+
+.contact-messages .message-list li.message-you span {
+  float: left;
+  background-color: #f9f9f9;
+}
+
+.contact-messages .message-list li.message-you span:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -8px;
+  left: -46px;
+  height: 11px;
+  border-right: 60px solid #CCC;
+  background: #ccc;
+  -webkit-border-bottom-right-radius: 80px 50px;
+  -moz-border-radius-bottomright: 80px 50px;
+  border-bottom-right-radius: 80px 50px;
+  -webkit-transform: translate(0, -2px);
+  -moz-transform: translate(0, -2px);
+  -ms-transform: translate(0, -2px);
+  -o-transform: translate(0, -2px);
+  transform: translate(0, -2px);
+}
+
+.contact-messages .message-list li.message-you span:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -8px;
+  left: -29px;
+  width: 60px;
+  height: 11px;
+  background: #D7E8FF;
+  -webkit-border-bottom-right-radius: 40px 50px;
+  -moz-border-radius-bottomright: 40px 50px;
+  border-bottom-right-radius: 40px 50px;
+  -webkit-transform: translate(-30px, -2px);
+  -moz-transform: translate(-30px, -2px);
+  -ms-transform: translate(-30px, -2px);
+  -o-transform: translate(-30px, -2px);
+  transform: translate(-30px, -2px);
+}
+
+.contact-messages .message-list li.message-me span {
+  float: right;
+  background-color: #43D61E;
+}
+
+.contact-messages .message-list li.message-me span:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -8px;
+  right: -47px;
+  height: 11px;
+  border-left: 60px solid #43D61E;
+  background: #43D61E;
+  -webkit-border-bottom-left-radius: 80px 50px;
+  -moz-border-radius-bottomleft: 80px 50px;
+  border-bottom-left-radius: 80px 50px;
+  -webkit-transform: translate(0, -2px);
+  -moz-transform: translate(0, -2px);
+  -ms-transform: translate(0, -2px);
+  -o-transform: translate(0, -2px);
+  transform: translate(0, -2px);
+}
+
+.contact-messages .message-list li.message-me span:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -8px;
+  right: -89px;
+  width: 60px;
+  height: 11px;
+  background: #D7E8FF;
+  -webkit-border-bottom-left-radius: 40px 50px;
+  -moz-border-radius-bottomleft: 40px 50px;
+  border-bottom-left-radius: 40px 50px;
+  -webkit-transform: translate(-30px, -2px);
+  -moz-transform: translate(-30px, -2px);
+  -ms-transform: translate(-30px, -2px);
+  -o-transform: translate(-30px, -2px);
+  transform: translate(-30px, -2px);
+}
+
+.contact-messages .send-message table {
+  width: 100%;
+}
+
+.contact-messages .send-message .send-input-container .send-input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 0;
+  height: auto;
+}
+
+.contact-messages .send-message .send-btn-container .send-btn {
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.contact-messages .send-message .split {
+  width: 7px;
+}
+
+.stats .content {
+  padding: 25px;
+}
+
+.stats .content h2 {
+  text-align: center;
+}

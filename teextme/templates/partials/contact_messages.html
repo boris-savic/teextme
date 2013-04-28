@@ -1,0 +1,35 @@
+{% verbatim %}
+<div class="contact-messages">
+  <header class="bar-title">
+    <a class="button-prev" href="{{ back.href }}">{{ back.text }}</a>
+    <h1 class="title">{{ contact.first_name }} {{ contact.last_name }}</h1>
+  </header>
+
+  <footer class="bar-standard bar-footer send-message">
+    <form ng-submit="sendMessage()">
+      <table>
+        <tr>
+          <td class="send-input-container">
+            <input type="text" placeholder="Text Mesage" class="send-input" ng-model="newMessage" focus>
+          </td>
+          <td class="split"></td>
+          <td class="send-btn-container">
+            <button type="submit" class="button send-btn">Send</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </footer>
+
+  <div class="content" scroller="contentScroller">
+    <div class="content-padded">
+      <ul class="message-list">
+        <li ng-repeat="msg in messages" class="message-{{ msg.person }}"><span>{{ msg.message }}</span></li>
+      </ul>
+      <p ng-show="loaded && !messages.length">No messages yet.</p>
+    </div>
+
+  </div>
+
+</div>
+{% endverbatim %}

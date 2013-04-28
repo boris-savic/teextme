@@ -197,17 +197,17 @@ LOGGING = {
 
 ALLOWED_HOSTS = ['*']
 
-LOGIN_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL = '/app'
 
-SITE_NAME = "TeextMe"
+SITE_NAME = 'TeextMe'
 
 SMS_BACKEND = 'test'
 
 # Nexmo SMS settings
-NEXMO_API_KEY = "KEY"
-NEXMO_API_SECRET = "SECRET"
+NEXMO_API_KEY = 'KEY'
+NEXMO_API_SECRET = 'SECRET'
 
-ACTIVATION_MESSAGE = "Welcome to TeextMe, your activation code is: %s"
+ACTIVATION_MESSAGE = 'Welcome to TeextMe, your activation code is: %s'
 
 try:
     from local_settings import *

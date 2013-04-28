@@ -1,19 +1,18 @@
 {% verbatim %}
-<div class="contacts">
+<div class="messages">
   <header class="bar-title">
-    <h1 class="title">Contacts</h1>
-    <a class="button" href="#/contacts/add"><i class="icon-plus"></i></a>
+    <h1 class="title">TeextMe</h1>
   </header>
 
   <nav class="bar-tab">
     <ul class="tab-inner">
-      <li class="tab-item">
+      <li class="tab-item active">
         <a href="#/messages">
           <i class="icon-comments tab-icon"></i>
           <div class="tab-label">Messages</div>
         </a>
       </li>
-      <li class="tab-item active">
+      <li class="tab-item">
         <a href="#/contacts">
           <i class="icon-user tab-icon"></i>
           <div class="tab-label">Contacts</div>
@@ -30,13 +29,14 @@
 
   <div class="content">
     <ul class="list">
-      <li ng-repeat="contact in contacts">
-        <a href="#/contacts/{{ contact.id }}/messages">
-          <strong>{{ contact.first_name }} {{ contact.last_name }}</strong>
+      <li ng-repeat="message in messages">
+        <a href="#/contacts/{{ message.contact }}/messages?back=messages">
+          <p class="message-author"><strong>{{ message.sender_name }}</strong></p>
+          <p class="message-content">{{ message.message }}</p>
           <span class="chevron"></span>
         </a>
       </li>
-      <li ng-show="loaded && !contacts.length">
+      <li ng-show="loaded && !messages.length">
         <a href="#/contacts/add">
           <strong>Welcome to TeextMe! Start by adding new contact!</strong>
           <span class="chevron"></span>

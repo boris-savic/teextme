@@ -55,3 +55,21 @@ class Message(models.Model):
             self.other_message = other_message
         else:
             send_sms(sender_phone_number, recepient_phone_number, self.message)
+
+    def get_sender(self):
+        if self.sender:
+            return self.sender.get_display()
+        else:
+            if self.recepient:
+                return self.recepient.get_display()
+            else:
+                return self.other_message.user.phone_number
+
+    def get_contact(self):
+        if self.sender:
+            return self.sender.id
+        else:
+            if self.recepient:
+                return self.recepient.id
+            else:
+                return self.other_message.user.phone_number
