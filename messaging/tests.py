@@ -4,13 +4,16 @@ from customauth.models import MyUser
 from contacts.models import Contact
 from messaging.models import Message
 
+
 class MessagingTest(SmsTestCase):
     def test_contact_to_contact(self):
         joe = MyUser.objects.create(country_code='+1', phone_number='1')
         jack = MyUser.objects.create(country_code='+1', phone_number='2')
 
-        joe_contact_jack = Contact.objects.create(user=joe, first_name='Jack', last_name='Last', phone_number='+12')
-        jack_contact_joe = Contact.objects.create(user=jack, first_name='Joe', last_name='Last', phone_number='+11')
+        joe_contact_jack = Contact.objects.create(
+            user=joe, first_name='Jack', last_name='Last', phone_number='+12')
+        jack_contact_joe = Contact.objects.create(
+            user=jack, first_name='Joe', last_name='Last', phone_number='+11')
 
         message = Message.objects.create(
             user=joe,
@@ -39,7 +42,8 @@ class MessagingTest(SmsTestCase):
         joe = MyUser.objects.create(country_code='+1', phone_number='1')
         jack = MyUser.objects.create(country_code='+1', phone_number='2')
 
-        joe_contact_jack = Contact.objects.create(user=joe, first_name='Jack', last_name='Last', phone_number='+12')
+        joe_contact_jack = Contact.objects.create(
+            user=joe, first_name='Jack', last_name='Last', phone_number='+12')
 
         message = Message.objects.create(
             user=joe,
@@ -67,7 +71,8 @@ class MessagingTest(SmsTestCase):
     def test_contact_to_nonuser(self):
         joe = MyUser.objects.create(country_code='+1', phone_number='1')
 
-        joe_contact_jack = Contact.objects.create(user=joe, first_name='Jack', last_name='Last', phone_number='+12')
+        joe_contact_jack = Contact.objects.create(
+            user=joe, first_name='Jack', last_name='Last', phone_number='+12')
 
         message = Message.objects.create(
             user=joe,
