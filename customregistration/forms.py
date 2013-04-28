@@ -69,7 +69,8 @@ class RegistrationForm(forms.Form):
             phone_number,
             password)
 
-        activation = ActivationProfile.objects.create_activation(user)
+        ActivationProfile.objects.create_activation(user)
+
         user.is_active = False
         user.save()
 

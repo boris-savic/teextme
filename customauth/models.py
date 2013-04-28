@@ -85,4 +85,4 @@ class MyUser(AbstractBaseUser):
 
     def save(self, *args, **kwargs):
         self.full_number = self.country_code + self.phone_number.lstrip('0')
-        ret = super(MyUser, self).save(*args, **kwargs)
+        return super(MyUser, self).save(*args, **kwargs)
