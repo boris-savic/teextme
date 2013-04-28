@@ -1,4 +1,3 @@
-from teextme import sms
 from teextme.tests import SmsTestCase
 from customauth.models import MyUser
 from contacts.models import Contact

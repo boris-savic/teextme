@@ -28,7 +28,7 @@
 
             <ul class="nav pull-right">
                {% if user.is_authenticated %}
-                <li><a href="#">Hi {{user.phone_number}}</a></li>
+                <li><a href="{% url 'app' %}">Hi {{user.phone_number}}</a></li>
                 <li><a href="{% url 'django.contrib.auth.views.logout' %}">Logout</a><li>
                {% else %}
                 <li><a href="{% url 'django.contrib.auth.views.login' %}">Sign in</a><li>

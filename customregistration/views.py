@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth import login
 from django.db import transaction
+from django.conf import settings
 
 from customregistration.forms import RegistrationForm, ActivationForm
 
@@ -30,7 +31,7 @@ def activate(request):
                 user = form.save()
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
                 login(request, user)
-                return HttpResponseRedirect("/")
+                return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
         else:
             form = ActivationForm(
                 initial={
@@ -39,4 +40,4 @@ def activate(request):
             'form': form},
             RequestContext(request))
     else:
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)

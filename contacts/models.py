@@ -23,3 +23,8 @@ class Contact(models.Model):
                 self.contact_user = matches[0]
 
         return super(Contact, self).save(*args, **kwargs)
+
+    def get_display(self):
+        name = u' '.join([self.first_name, self.last_name])
+
+        return name or self.phone_number

@@ -1,37 +1,45 @@
-from django.shortcuts import render_to_response, redirect
-from django.template import RequestContext
 from django.db.models import Q
 
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+
 from messaging.models import Message
+from messaging.serializers import MessageSerializer
+
 from contacts.models import Contact
 
-from messaging.forms import *
 
+class MessageList(generics.ListCreateAPIView):
+    model = Message
+    serializer_class = MessageSerializer
+    permission_classes = (IsAuthenticated,)
 
-def messages_contact(request, contact_id):
-    user = request.user
+    def get_queryset(self):
+        user = self.request.user
 
-    qs = Message.objects.filter(user=user)
+        qs = Message.objects.filter(user=user)
 
-    if contact_id:
-        contact = Contact.objects.get(pk=contact_id)
+        contact_id = self.request.GET.get('contact')
 
-        qs = qs.filter(Q(recepient=contact) | Q(sender=contact))
+        if contact_id:
+            contact = Contact.objects.get(pk=contact_id)
 
-    messages = qs.order_by('id')
+            qs = qs.filter(Q(recepient=contact) | Q(sender=contact))
 
-    form = MessageForm(user=user, contact=contact)
+        return qs.order_by('id')
 
-    if request.method == 'POST':
-        form = MessageForm(user=user, contact=contact, data=request.POST)
-        if form.is_valid():
-            form.save()
+    def pre_save(self, obj):
+        obj.user = self.request.user
 
-            return redirect('messages_contact', contact_id=contact_id)
+    def post_save(self, obj, created):
+        obj.send()
 
-    return render_to_response('messaging/messages.html', {
-        'user': user,
-        'contact_id': contact_id,
-        'form': form,
-        'messages': messages,
-    }, RequestContext(request))
+class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Message
+    serializer_class = MessageSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        user = self.request.user
+
+        return Message.objects.filter(user=user)
