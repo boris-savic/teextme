@@ -1,5 +1,7 @@
 from django import forms
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from customauth.country import COUNTRY_CHOICES
 from customregistration.models import ActivationProfile
@@ -117,3 +119,43 @@ class ActivationForm(forms.Form):
         self.user.save()
 
         return self.user
+
+
+class MyAuthenticationForm(AuthenticationForm):
+    """
+    Base class for authenticating users. Extend this to get a form that accepts
+    username/password logins.
+    """
+    country_code = forms.ChoiceField(label="Country Code",
+                                     choices=COUNTRY_CHOICES)
+    username = forms.RegexField(
+        regex=r'^[0-9]+$',
+        max_length=15,
+        widget=forms.TextInput(),
+        label="Phone Number",
+        error_messages={'invalid': "This value may contain only numbers."})
+    password = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
+
+    error_messages = {
+        'invalid_login': _("Please enter a correct %(username)s and password. "
+                           "Note that both fields may be case-sensitive."),
+        'inactive': _("This account is inactive."),
+    }
+
+    def clean(self):
+        country_code = self.cleaned_data.get('country_code')
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+
+        if country_code and username and password:
+            full_number = country_code + username.lstrip('0') 
+            self.user_cache = authenticate(username=full_number,
+                                           password=password)
+            if self.user_cache is None:
+                raise forms.ValidationError(
+                    self.error_messages['invalid_login'] % {
+                        'username': self.username_field.verbose_name
+                    })
+            elif not self.user_cache.is_active:
+                raise forms.ValidationError(self.error_messages['inactive'])
+        return self.cleaned_data

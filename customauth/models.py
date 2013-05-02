@@ -22,7 +22,7 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, country_code, phone_number, password):
+    def create_superuser(self, country_code, phone_number, full_number, password):
         """
         Creates and saves a superuser with the given phone number,
         country country_code and password.
@@ -42,19 +42,21 @@ class MyUser(AbstractBaseUser):
     phone_number = models.CharField(
         verbose_name='phone number',
         max_length=255,
-        unique=True,
         db_index=True,
     )
 
-    full_number = models.CharField(max_length=255)  # generated denormalization
+    full_number = models.CharField(
+        max_length=255,
+        unique=True,
+    )  # generated denormalization
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
     objects = MyUserManager()
 
-    USERNAME_FIELD = 'phone_number'
-    REQUIRED_FIELDS = ['country_code']
+    USERNAME_FIELD = 'full_number'
+    REQUIRED_FIELDS = ['country_code', 'phone_number']
 
     def get_full_name(self):
         # The user is identified by their phone number
