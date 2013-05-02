@@ -11,6 +11,7 @@
 {% endif %}
 
 <form method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
+  {{ form.country_code|field_class:'input-block-level' }}
   {{ form.username|placeholder:'Phone Number'|field_class:'input-block-level' }}
   {{ form.password|placeholder:'Password'|field_class:'input-block-level' }}
   <!-- <label class="checkbox">

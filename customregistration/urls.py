@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, url
 from django.contrib.auth import views as auth_views
 
+from customregistration.forms import MyAuthenticationForm
+
 urlpatterns = patterns(
     '',
     url(r'^register/$',
@@ -11,7 +13,8 @@ urlpatterns = patterns(
         name='registration_activate'),
     url(r'^login/$',
         auth_views.login,
-        {'template_name': 'customregistration/login.html'},
+        {'template_name': 'customregistration/login.html',
+         'authentication_form':MyAuthenticationForm},
         name='auth_login'),
     url(r'^logout/$',
         auth_views.logout,
