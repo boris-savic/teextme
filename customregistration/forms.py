@@ -148,7 +148,7 @@ class MyAuthenticationForm(AuthenticationForm):
         password = self.cleaned_data.get('password')
 
         if country_code and username and password:
-            full_number = country_code + username.lstrip('0') 
+            full_number = country_code + username.lstrip('0')
             self.user_cache = authenticate(username=full_number,
                                            password=password)
             if self.user_cache is None:

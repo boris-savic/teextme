@@ -9,11 +9,13 @@ from rest_framework.response import Response
 
 from teextme.models import Stats
 
+
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
         'contacts': reverse('contact-list', request=request)
     })
+
 
 @login_required
 def stats(request):
