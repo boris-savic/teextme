@@ -3,6 +3,7 @@ from django.conf import settings
 
 from teextme import sms
 
+
 class SmsTestCase(TestCase):
     def setUp(self):
         self.old_sms_backend = settings.SMS_BACKEND

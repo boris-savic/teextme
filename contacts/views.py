@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from contacts.models import Contact
 from contacts.serializers import ContactSerializer
 
+
 class ContactList(generics.ListCreateAPIView):
     model = Contact
     serializer_class = ContactSerializer
@@ -14,6 +15,7 @@ class ContactList(generics.ListCreateAPIView):
 
     def pre_save(self, obj):
         obj.user = self.request.user
+
 
 class ContactDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Contact

@@ -34,6 +34,7 @@ class MessageList(generics.ListCreateAPIView):
     def post_save(self, obj, created):
         obj.send()
 
+
 class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Message
     serializer_class = MessageSerializer

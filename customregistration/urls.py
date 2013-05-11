@@ -14,7 +14,7 @@ urlpatterns = patterns(
     url(r'^login/$',
         auth_views.login,
         {'template_name': 'customregistration/login.html',
-         'authentication_form':MyAuthenticationForm},
+         'authentication_form': MyAuthenticationForm},
         name='auth_login'),
     url(r'^logout/$',
         auth_views.logout,
