@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 from rest_framework.urlpatterns import format_suffix_patterns
 
@@ -37,7 +38,7 @@ urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'api'])
 urlpatterns += patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^$',  lambda x: HttpResponseRedirect('/accounts/login/'), name='index'),
     url(r'^accounts/', include('customregistration.urls')),
 
     url(r'^app$', login_required(

@@ -1,27 +1,45 @@
-{% extends "customregistration/registration_base.html" %}
+{% extends "base.html" %}
 
 {% load helpers %}
 
 {% block title %}Please sign in{% endblock %}
 
-{% block content %}
+{% block body_content %}
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+<div class="container">
+  <div>
+    <header class="bar-title">
+      <h1 class="title">TeextMe - Login</h1>
+      <a class="button" href="{% url 'customregistration.views.register' %}">
+        Sign up
+      </a>
+    </header>
 
-<form method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
-  {{ form.country_code|field_class:'input-block-level' }}
-  {{ form.username|placeholder:'Phone Number'|field_class:'input-block-level' }}
-  {{ form.password|placeholder:'Password'|field_class:'input-block-level' }}
-  <!-- <label class="checkbox">
-    <input type="checkbox" value="remember-me"> Remember me
-  </label> -->
+    <div class="content">
+      <br />
+      {% if form.errors %}
+      <ul class="inset list">
+        <li id="item1" class="segmented-controller-item active">
+          Your username and password didn't match. Please try again.
+        </li>
+      </ul>
+      {% endif %}
+      <div class="content-padded">
+        <form method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
+          {{ form.country_code|field_class:'input-block-level' }}
+          {{ form.username|placeholder:'Phone Number'|field_class:'input-block-level' }}
+          {{ form.password|placeholder:'Password'|field_class:'input-block-level' }}
+          <!-- <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Remember me
+          </label> -->
 
-  <p><a href="{% url 'registration_register' %}">Need an account</a>?</p>
+          <button style="display: block; width: 100%;" class="button-block button-main" type="submit">Sign in</button>
+          <input type="hidden" name="next" value="{{ next }}" />
+       </form>
+      </div>
+    </div>
 
-  <button class="btn btn-large btn-primary" type="submit">Sign in</button>
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
+  </div>
+</div>
 
 {% endblock %}
