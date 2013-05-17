@@ -263,6 +263,17 @@ angular
       }
     });
   }
+})
+
+.directive('mainnav', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      active: '@',
+    },
+    templateUrl: 'mainnav.html'
+  };
 });
 
 $.jqplot.config.enablePlugins = true;
