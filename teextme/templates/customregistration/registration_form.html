@@ -1,25 +1,52 @@
-{% extends "customregistration/registration_base.html" %}
+{% extends "base.html" %}
 
 {% load helpers %}
 
 {% block title %}Register for an account{% endblock %}
 
-{% block content %}
-<form method='post' action=''>{% csrf_token %}
-  {% for error in form.non_field_errors %}
-    <div class="alert alert-error">{{ error }}</div>
-  {% endfor %}
+{% block body_content %}
+<div class="container">
+  <div>
+    <header class="bar-title">
+      <h1 class="title">TeextMe - Register</h1>
+      <a class="button" href="{% url 'django.contrib.auth.views.login' %}">
+        Sign in
+      </a>
+    </header>
 
-  {% for field in form %}
-    {% for error in field.errors %}
-      <div class="alert alert-error">{{ field.label }}: {{ error }}</div>
-    {% endfor %}
-  {% endfor %}
+    <div class="content">
+      <br />
+      <div class="content-padded">
+        <form method='post' action=''>{% csrf_token %}
 
-  {{ form.country_code}}
-  {{ form.phone_number|placeholder:'Phone Number'|field_class:'input-block-level'}}
-  {{ form.password1|placeholder:'Password'|field_class:'input-block-level' }}
-  {{ form.password2|placeholder:'Password (again)'|field_class:'input-block-level' }}
-  <button class="btn btn-large btn-primary" type="submit">Sign Up</button>
-</form>
+          {% if form.errors %}
+          <ul class="inset list">
+            <li id="item1" class="segmented-controller-item active">
+              {% for error in form.non_field_errors %}
+                <div class="alert alert-error">{{ error }}</div>
+              {% endfor %}
+
+              {% for field in form %}
+                {% for error in field.errors %}
+                  <div class="alert alert-error">{{ field.label }}: {{ error }}</div>
+                {% endfor %}
+              {% endfor %}
+            </li>
+          </ul>
+          {% endif %}
+
+          {{ form.country_code}}
+          {{ form.phone_number|placeholder:'Phone Number'}}
+          {{ form.password1|placeholder:'Password'|field_class:'input-block-level' }}
+          {{ form.password2|placeholder:'Password (again)'|field_class:'input-block-level' }}
+          <button style="display: block; width: 100%;" class="button-block button-main" type="submit">Sign up</button>  
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
 {% endblock %}

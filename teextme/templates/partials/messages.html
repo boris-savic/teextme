@@ -4,28 +4,7 @@
     <h1 class="title">TeextMe</h1>
   </header>
 
-  <nav class="bar-tab">
-    <ul class="tab-inner">
-      <li class="tab-item active">
-        <a href="#/messages">
-          <i class="icon-comments tab-icon"></i>
-          <div class="tab-label">Messages</div>
-        </a>
-      </li>
-      <li class="tab-item">
-        <a href="#/contacts">
-          <i class="icon-user tab-icon"></i>
-          <div class="tab-label">Contacts</div>
-        </a>
-      </li>
-      <li class="tab-item">
-        <a href="#/stats">
-          <i class="icon-bar-chart tab-icon"></i>
-          <div class="tab-label">Stats</div>
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <mainnav active="messages"></mainnav>
 
   <div class="content">
     <ul class="list">
@@ -37,10 +16,7 @@
         </a>
       </li>
       <li ng-show="loaded && !messages.length">
-        <a href="#/contacts/add">
-          <strong>Welcome to TeextMe! Start by adding new contact!</strong>
-          <span class="chevron"></span>
-        </a>
+        <strong>No messages yet.</strong>
       </li>
     </ul>
   </div>

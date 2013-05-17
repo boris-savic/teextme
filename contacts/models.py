@@ -16,6 +16,9 @@ class Contact(models.Model):
                                 self.phone_number)
 
     def save(self, *args, **kwargs):
+        self.phone_number = self.phone_number.replace(" ", "")
+        self.phone_number = self.phone_number.replace("-", "")
+        self.phone_number = self.phone_number.replace("/", "")
         if not self.contact_user:
             matches = MyUser.objects.filter(full_number=self.phone_number)
 

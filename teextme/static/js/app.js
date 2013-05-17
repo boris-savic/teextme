@@ -22,6 +22,10 @@ angular
       templateUrl: 'stats.html',
       controller: 'StatsCtrl'
     })
+    .when('/settings', {
+      templateUrl: 'settings.html',
+      controller: 'SettingsCtrl'
+    })
     .otherwise({
       redirectTo: '/messages'
     });
@@ -135,7 +139,6 @@ angular
 })
 
 .controller('ContactMessagesCtrl', function($scope, $resource, $routeParams, Contact, Message, user, $timeout) {
-  $scope.me = user.username;
   $scope.contact = null;
   $scope.loaded = false;
 
@@ -223,6 +226,10 @@ angular
   });
 })
 
+.controller('SettingsCtrl', function($scope) {
+  $scope.full_number = USER;
+})
+
 .directive('focus', function() {
   return function(scope, element, attrs) {
     element.focus();
@@ -263,6 +270,17 @@ angular
       }
     });
   }
+})
+
+.directive('mainnav', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      active: '@',
+    },
+    templateUrl: 'mainnav.html'
+  };
 });
 
 $.jqplot.config.enablePlugins = true;
