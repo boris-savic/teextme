@@ -18,6 +18,11 @@ class RequestTemplateView(TemplateView):
         context['request'] = self.request
         return context
 
+
+def auth_login(request):
+    return HttpResponseRedirect('/accounts/login/')
+
+
 urlpatterns = patterns(
     '',
     url(r'^api$', 'teextme.views.api_root'),
@@ -38,7 +43,7 @@ urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'api'])
 urlpatterns += patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$',  lambda x: HttpResponseRedirect('/accounts/login/'), name='index'),
+    url(r'^$', auth_login, name='index'),
     url(r'^accounts/', include('customregistration.urls')),
 
     url(r'^app$', login_required(
