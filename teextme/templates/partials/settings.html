@@ -1,0 +1,28 @@
+{% verbatim %}
+<div class="settings">
+  <header class="bar-title">
+    <h1 class="title">Settings</h1>
+  </header>
+
+  <mainnav active="settings"></mainnav>
+
+  <div class="content">
+    <div class="content-padded">
+      <label class="form-section">Account</label>
+
+      <form>
+        <div class="input-group">
+          <div class="input-row">
+            <label>Phone number</label>
+            <input type="text" ng-model="full_number" disabled />
+          </div>
+        </div>
+      </form>
+
+      <br><br>
+
+      <a href="/accounts/logout" class="button-negative button-block">Logout</a>
+    </div>
+  </div>
+</div>
+{% endverbatim %}

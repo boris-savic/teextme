@@ -176,3 +176,12 @@
 .stats .content h2 {
   text-align: center;
 }
+
+.settings .form-section {
+  font-weight: bold;
+  margin: 5px 0 10px 14px;
+  display: block;
+  color: #555;
+  text-transform: uppercase;
+  font-size: 12px;
+}

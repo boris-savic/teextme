@@ -22,6 +22,10 @@ angular
       templateUrl: 'stats.html',
       controller: 'StatsCtrl'
     })
+    .when('/settings', {
+      templateUrl: 'settings.html',
+      controller: 'SettingsCtrl'
+    })
     .otherwise({
       redirectTo: '/messages'
     });
@@ -135,7 +139,6 @@ angular
 })
 
 .controller('ContactMessagesCtrl', function($scope, $resource, $routeParams, Contact, Message, user, $timeout) {
-  $scope.me = user.username;
   $scope.contact = null;
   $scope.loaded = false;
 
@@ -221,6 +224,10 @@ angular
   Stats.get(function(stats) {
     $scope.stats = stats;
   });
+})
+
+.controller('SettingsCtrl', function($scope) {
+  $scope.full_number = USER;
 })
 
 .directive('focus', function() {
